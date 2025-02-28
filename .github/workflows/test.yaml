@@ -45,3 +45,7 @@ jobs:
           path: |
             test/tb.vcd
             test/results.xml
+          if-no-files-found: warn
+
+
+
