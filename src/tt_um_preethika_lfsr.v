@@ -21,7 +21,7 @@ module tt_um_preethika_lfsr (
     assign uio_out = 8'b00000000;
     assign uo_out[7:3] = 5'b00000;
 
-    wb_lfsr wb_lfsr(
+    wb_LFSR wb_lfsr(
       .i_clk(clk), 
       .i_reset(rst), 
       .i_wb_cyc(uio_in[0]), 
