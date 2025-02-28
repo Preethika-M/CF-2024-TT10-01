@@ -22,24 +22,24 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: "Wishbone data input bit 0"
-  ui[1]: "Wishbone data input bit 1"
-  ui[2]: "Wishbone data input bit 2"
-  ui[3]: "Wishbone data input bit 3"
-  ui[4]: "Wishbone data input bit 4"
-  ui[5]: "Wishbone data input bit 5"
-  ui[6]: "Wishbone data input bit 6"
-  ui[7]: "Wishbone data input bit 7"
+  ui[0]: "Wishbone d_input bit 0"
+  ui[1]: "Wishbone d_input bit 1"
+  ui[2]: "Wishbone d_input bit 2"
+  ui[3]: "Wishbone d_input bit 3"
+  ui[4]: "Wishbone d_input bit 4"
+  ui[5]: "Wishbone d_input bit 5"
+  ui[6]: "Wishbone d_input bit 6"
+  ui[7]: "Wishbone d_input bit 7"
 
   # Outputs
   uo[0]: "Output bit to indicate whether or not the wishbone has stalled (o_wb_stall)"
   uo[1]: "LFSR output bit (o_wb_data)"
   uo[2]: "Output bit for the wishbone to acknowledge the successful end of writing part of the LFSR seed (o_wb_ack)"
-  uo[3]: "Not used in this design"
-  uo[4]: "Not used in this design"
-  uo[5]: "Not used in this design"
-  uo[6]: "Not used in this design"
-  uo[7]: "Not used in this design"
+  uo[3]: "Not used"
+  uo[4]: "Not used"
+  uo[5]: "Not used"
+  uo[6]: "Not used"
+  uo[7]: "Not used"
 
   # Bidirectional pins
   uio[0]: "Wishbone input bit to indicate that a valid bus cycle is in progress (i_wb_cyc, hardcoded as an input)"
