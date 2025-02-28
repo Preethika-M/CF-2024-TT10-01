@@ -1,8 +1,8 @@
 # Tiny Tapeout project information
 project:
-  title:        "lfsr"      # Project title
+  title:        "LFSR"      # Project title
   author:       "Preethika"      # Your name
-  #discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Linear feedback shift register random number generator"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
@@ -12,11 +12,9 @@ project:
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_preethika_lfsr"
-
-  # List your project's source files here.
-  # Source files must be in ./src and you must list each source file separately, one per line.
-  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
-  source_files:
+  
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:        
     - "tt_um_preethika_lfsr.v"
     - "lfsr.v"
     - "wb_LFSR.v"
@@ -24,14 +22,14 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: "Wishbone data ip bit 0"
-  ui[1]: "Wishbone data ip bit 1"
-  ui[2]: "Wishbone data ip bit 2"
-  ui[3]: "Wishbone data ip bit 3"
-  ui[4]: "Wishbone data ip bit 4"
-  ui[5]: "Wishbone data ip bit 5"
-  ui[6]: "Wishbone data ip bit 6"
-  ui[7]: "Wishbone data ip bit 7"
+  ui[0]: "Wishbone data input bit 0"
+  ui[1]: "Wishbone data input bit 1"
+  ui[2]: "Wishbone data input bit 2"
+  ui[3]: "Wishbone data input bit 3"
+  ui[4]: "Wishbone data input bit 4"
+  ui[5]: "Wishbone data input bit 5"
+  ui[6]: "Wishbone data input bit 6"
+  ui[7]: "Wishbone data input bit 7"
 
   # Outputs
   uo[0]: "Output bit to indicate whether or not the wishbone has stalled (o_wb_stall)"
