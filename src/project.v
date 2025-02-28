@@ -1,27 +1,40 @@
-/*
- * Copyright (c) 2024 Your Name
- * SPDX-License-Identifier: Apache-2.0
- */
+module linear_feedback_shift_register(out, clock, reset, seed, load_seed);
+	output reg out;
+	input [31:0] seed;
+	input load_seed;
+	input reset;
+	input clock;
+	wire [31:0] flip_flop_outputs;
+	wire [31:0] flip_flop_inputs;
+	wire feedback1, feedback2, feedback3;
+	flip_flop flip_flop_instance[31:0] (flip_flop_outputs, clock, reset, flip_flop_inputs);
+	one_bit_mux muxes[31:0] (flip_flop_inputs, load_seed, seed, {flip_flop_outputs[30:0], feedback3});
+	xor feedback_gate_one(feedback1, flip_flop_outputs[6], flip_flop_outputs[31]);
+	xor feedback_gate_two(feedback2, feedback1, flip_flop_outputs[5]);
+	xor feedback_gate_three(feedback3, feedback2, flip_flop_outputs[1]);
+	assign out = feedback3;
+endmodule
 
-`default_nettype none
+module flip_flop(out, clock, reset, in);
+	input clock;
+	input reset;
+	input in;
+	output reg out;
+	always @(posedge clock or posedge reset)
+	begin
 
-module tt_um_example (
-    input  wire [7:0] ui_in,    // Dedicated inputs
-    output wire [7:0] uo_out,   // Dedicated outputs
-    input  wire [7:0] uio_in,   // IOs: Input path
-    output wire [7:0] uio_out,  // IOs: Output path
-    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
-    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
-    input  wire       clk,      // clock
-    input  wire       rst_n     // reset_n - low to reset
-);
+	if (reset)
+		out = 0;
+	else
+		out = in;
+	end
+endmodule
 
-  // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
-  assign uio_out = 0;
-  assign uio_oe  = 0;
-
-  // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0};
-
+module one_bit_mux(out, control, input_a, input_b);
+	output reg out;
+	input control, input_a, input_b;
+	wire not_control;
+	always @(control or not_control or input_a or input_b)
+		out = (control & input_a) | (not_control & input_b);
+		not (not_control, control);
 endmodule
